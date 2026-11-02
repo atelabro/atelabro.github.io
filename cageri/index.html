@@ -8,7 +8,7 @@
   <meta name="description" content="Твојот час. Твојата желба. Преземи Цагери: значења на часовите, омилени желби и потсетници на македонски.">
   <link rel="canonical" href="https://atelabro.github.io/cageri/">
   <meta property="og:title" content="Цагери — Замисли желба.">
-  <meta property="og:description" content="Твојот час. Твојата желба. Достапно на App Store. Наскоро за Android.">
+  <meta property="og:description" content="Твојот час. Твојата желба. Достапно на App Store и Google Play.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://atelabro.github.io/cageri/">
   <meta property="og:image" content="https://atelabro.github.io/cageri/assets/header.png">
@@ -25,7 +25,7 @@
     <p>Откриј ги значењата на часовите, зачувај ги омилените желби и сподели го моментот.</p>
     <div class="actions">
       <a class="store" href="https://apps.apple.com/app/id6817363033"><small>Преземи на</small><strong>App Store</strong></a>
-      <div class="soon" id="android-option"><small>Наскоро на</small><strong>Google Play</strong></div>
+      <a class="store" id="android-option" href="https://play.google.com/store/apps/details?id=com.alab.cageri"><small>Преземи на</small><strong>Google Play</strong></a>
     </div>
     <p id="redirect-status" role="status"></p>
     <p class="note">На македонски · Без регистрација · За забава</p>
@@ -35,8 +35,8 @@
     (() => {
       const iosUrl = 'https://apps.apple.com/app/id6817363033';
       const androidUrl = 'https://play.google.com/store/apps/details?id=com.alab.cageri';
-      // Set true only after the public Google Play production release is live.
-      const androidLive = false;
+      // Google Play production release is live.
+      const androidLive = true;
       const ua = navigator.userAgent || '';
       const isIOS = /iPad|iPhone|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
       const isAndroid = /Android/i.test(ua);
