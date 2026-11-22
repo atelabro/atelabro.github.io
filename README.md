@@ -4,7 +4,7 @@ GitHub Pages user site for AL4Bro. Hosts app-ads.txt, privacy policy, and suppor
 
 ## Live URLs
 
-- https://atelabro.github.io/ (AL4Bro developer profile listing the apps)
+- https://atelabro.github.io/ (AL4Bro developer profile: Miso the Cat, DuckOff, Cageri, Of Gods & Cities in development, and cenaimbox.mk)
 - https://atelabro.github.io/support.html (currently DuckOff support)
 - https://atelabro.github.io/app-ads.txt (must stay at the root for AdMob)
 - https://atelabro.github.io/duckoff/privacy.html

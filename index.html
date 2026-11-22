@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AL4Bro - Apps and Games</title>
-  <meta name="description" content="Playful apps and games by AL4Bro: Miso the Cat, DuckOff and Cageri.">
+  <meta name="description" content="Apps, games and web projects by AL4Bro: Miso the Cat, DuckOff, Cageri, Of Gods &amp; Cities and cenaimbox.mk.">
   <meta name="theme-color" content="#fbf7ef">
   <link rel="canonical" href="https://atelabro.github.io/">
   <meta property="og:title" content="AL4Bro - Apps and Games">
@@ -264,12 +264,49 @@
     .miso { --accent: #d9661f; --on-accent: #ffffff; --tint: #fdeedd; }
     .duckoff { --accent: #1f2a44; --on-accent: #ffd36b; --tint: #dcecf7; }
     .cageri { --accent: #203e32; --on-accent: #e4f5b9; --tint: #f8f5eb; }
+    .ogc { --accent: #9c3a1e; --on-accent: #fff4dc; --tint: #f6ead2; }
+    .cenaimbox { --accent: #c43c0a; --on-accent: #ffffff; --tint: #f3f5f7; }
     @media (prefers-color-scheme: dark) {
       .miso { --accent: #f08a44; --on-accent: #1a1006; --tint: #3a2616; }
       .duckoff { --accent: #ffd36b; --on-accent: #1f2a44; --tint: #1e2a3a; }
       .cageri { --accent: #bfe38a; --on-accent: #16281f; --tint: #22302a; }
+      .ogc { --accent: #e8a066; --on-accent: #2a1408; --tint: #3a2a1c; }
+      .cenaimbox { --accent: #f0703c; --on-accent: #1a0b04; --tint: #1f2328; }
       .badge { background: rgba(28, 28, 31, 0.9); }
     }
+
+    /* cenaimbox: banner drawn in HTML so it stays crisp */
+    .web-banner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      padding: 8% 9%;
+      background: #f3f5f7;
+      color: #14181d;
+      font-family: Arial, system-ui, sans-serif;
+    }
+    .web-banner .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em; }
+    .web-banner .logo img { width: 34px; height: 34px; border-radius: 9px; }
+    .web-banner .headline { font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+    .offers { display: grid; gap: 8px; max-width: 420px; }
+    .offer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #e3e7eb;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 0.95rem;
+    }
+    .offer strong { font-variant-numeric: tabular-nums; }
+    .offer.best { border-color: #c43c0a; box-shadow: 0 0 0 1px #c43c0a inset; }
+    .offer.best strong { color: #c43c0a; }
+    .offer .tag { font-size: 0.72rem; font-weight: 700; color: #ffffff; background: #c43c0a; border-radius: 999px; padding: 2px 8px; margin-left: 8px; }
+    .bars { display: flex; align-items: end; gap: 5px; height: 38px; }
+    .bars span { flex: 1; background: #c9d1d9; border-radius: 3px 3px 0 0; }
+    .bars span:last-child { background: #c43c0a; }
 
     /* Contact and footer */
     .contact {
@@ -349,7 +386,7 @@
       <img src="assets/cageri.png" alt="" width="92" height="92">
     </div>
     <h1 class="wordmark">AL4Bro</h1>
-    <p class="tagline">Playful little apps and games, made with care by an independent developer.</p>
+    <p class="tagline">Playful apps, games and web projects, made with care by an independent developer.</p>
     <a class="cta" href="#apps">See the apps</a>
   </header>
 
@@ -401,6 +438,45 @@
           <a class="store" href="https://apps.apple.com/app/id6817363033"><small>Download on the</small><strong>App Store</strong></a>
           <a class="store" href="https://play.google.com/store/apps/details?id=com.alab.cageri"><small>Get it on</small><strong>Google Play</strong></a>
           <span class="minor"><a href="cageri/">Website</a><a href="cageri/support.html">Support</a><a href="cageri/privacy.html">Privacy policy</a></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="app ogc flip">
+      <div class="banner">
+        <img src="assets/ogc-banner.jpg" alt="Of Gods &amp; Cities: an ancient Greek city with red-tiled houses, a temple and busy streets" width="1200" height="675" loading="lazy">
+        <span class="badge">In development</span>
+      </div>
+      <div class="body">
+        <img class="icon" src="assets/ogc.png" alt="" width="104" height="104">
+        <h2>Of Gods &amp; Cities</h2>
+        <p class="pitch">A mythic city builder. Raise an ancient city, keep its people fed and happy, and meet the gods and heroes of Greek myth.</p>
+        <div class="actions">
+          <span class="soon"><small>In development for</small><strong>App Store</strong></span>
+          <span class="soon"><small>In development for</small><strong>Google Play</strong></span>
+          <span class="minor"><a href="of-gods-and-cities/">Website</a><a href="of-gods-and-cities/support.html">Support</a><a href="of-gods-and-cities/privacy.html">Privacy policy</a></span>
+        </div>
+      </div>
+    </article>
+
+    <p class="section-title">On the web</p>
+
+    <article class="app cenaimbox">
+      <div class="banner web-banner" aria-hidden="true">
+        <div class="logo"><img src="assets/cenaimbox.png" alt="" width="34" height="34">cenaimbox</div>
+        <p class="headline">Провери пред да купиш.</p>
+        <div class="offers">
+          <div class="offer best"><span>Продавница А<span class="tag">Најевтино</span></span><strong>4.290 ден.</strong></div>
+          <div class="offer"><span>Продавница Б</span><strong>4.590 ден.</strong></div>
+          <div class="offer"><span>Продавница В</span><strong>4.990 ден.</strong></div>
+        </div>
+      </div>
+      <div class="body">
+        <img class="icon" src="assets/cenaimbox.png" alt="" width="104" height="104">
+        <h2>cenaimbox.mk</h2>
+        <p class="pitch">Check before you buy. Compares prices for the same product across online stores in North Macedonia, with price history, for electronics, sports and beauty.</p>
+        <div class="actions">
+          <a class="store" href="https://cenaimbox.mk/"><small>Visit</small><strong>cenaimbox.mk</strong></a>
         </div>
       </div>
     </article>
