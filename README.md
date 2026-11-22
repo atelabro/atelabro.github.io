@@ -4,7 +4,7 @@ GitHub Pages user site for AL4Bro. Hosts app-ads.txt, privacy policy, and suppor
 
 ## Live URLs
 
-- https://atelabro.github.io/ (currently the DuckOff privacy policy; see Pending)
+- https://atelabro.github.io/ (AL4Bro developer profile listing the apps)
 - https://atelabro.github.io/support.html (currently DuckOff support)
 - https://atelabro.github.io/app-ads.txt (must stay at the root for AdMob)
 - https://atelabro.github.io/duckoff/privacy.html
@@ -19,8 +19,8 @@ GitHub Pages user site for AL4Bro. Hosts app-ads.txt, privacy policy, and suppor
 
 ## Pending
 
-Root cleanup (decided November 22, 2026): the root should become an AL4Bro developer profile page listing the apps, with no ad wording. Miso the Cat has no ads, and its pages share this domain.
+Root switched to the AL4Bro profile page on November 22, 2026. DuckOff's App Store Privacy Policy URL still points at the root (Apple only allows changing it with a new app version); the profile links to `duckoff/privacy.html` one click away.
 
 1. With the next DuckOff iOS version, change its Privacy Policy URL in App Store Connect to `https://atelabro.github.io/duckoff/privacy.html`, and its support URL to `https://atelabro.github.io/duckoff/support.html` if it uses the root support page.
-2. After that version is live, replace `index.html` with the profile page, and make the root `support.html` link to each app's support page.
+2. When Miso the Cat is live, replace "Coming soon" on the profile with its store links.
 3. Keep `app-ads.txt` at the root.
