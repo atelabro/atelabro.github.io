@@ -4,133 +4,416 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AL4Bro - Apps and Games</title>
-  <meta name="description" content="Apps and games by AL4Bro: Miso the Cat, DuckOff and Cageri.">
+  <meta name="description" content="Playful apps and games by AL4Bro: Miso the Cat, DuckOff and Cageri.">
+  <meta name="theme-color" content="#fbf7ef">
   <link rel="canonical" href="https://atelabro.github.io/">
+  <meta property="og:title" content="AL4Bro - Apps and Games">
+  <meta property="og:description" content="Playful apps and games: Miso the Cat, DuckOff and Cageri.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://atelabro.github.io/">
+  <meta property="og:image" content="https://atelabro.github.io/assets/miso-banner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/miso.png">
   <style>
     :root {
-      --bg: #f7f6f2;
+      --bg: #fbf7ef;
       --card: #ffffff;
-      --text: #1f2328;
-      --muted: #5f6670;
-      --line: #e6e3dc;
-      --link: #0a66c2;
-      --button: #1f2328;
-      --button-text: #ffffff;
+      --text: #1d1b19;
+      --muted: #6b655d;
+      --line: rgba(29, 27, 25, 0.08);
+      --shadow: 0 1px 2px rgba(60, 40, 20, 0.06), 0 12px 40px rgba(60, 40, 20, 0.10);
+      --shadow-hover: 0 2px 4px rgba(60, 40, 20, 0.08), 0 24px 60px rgba(60, 40, 20, 0.16);
+      --blob-1: rgba(255, 166, 87, 0.35);
+      --blob-2: rgba(160, 214, 120, 0.30);
+      --blob-3: rgba(120, 180, 255, 0.25);
+      --round: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #15171a;
-        --card: #1e2125;
-        --text: #eceef1;
-        --muted: #a2a9b2;
-        --line: #2e3238;
-        --link: #6cb2ff;
-        --button: #eceef1;
-        --button-text: #15171a;
+        --bg: #121214;
+        --card: #1c1c1f;
+        --text: #f3f1ed;
+        --muted: #a9a49c;
+        --line: rgba(255, 255, 255, 0.08);
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 40px rgba(0, 0, 0, 0.35);
+        --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.5), 0 24px 60px rgba(0, 0, 0, 0.5);
+        --blob-1: rgba(255, 140, 60, 0.18);
+        --blob-2: rgba(120, 190, 90, 0.14);
+        --blob-3: rgba(90, 150, 255, 0.14);
       }
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       background: var(--bg);
       color: var(--text);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
+      overflow-x: hidden;
     }
-    main { max-width: 760px; margin: 0 auto; padding: 56px 16px 32px; }
-    header h1 { font-size: 2.4rem; letter-spacing: -1px; margin: 0; }
-    header p { color: var(--muted); font-size: 1.05rem; margin: 8px 0 0; }
-    h2 { font-size: 1.1rem; margin: 48px 0 16px; }
-    .apps { display: grid; gap: 16px; }
-    .app {
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(40vmax 40vmax at 8% 4%, var(--blob-1), transparent 60%),
+        radial-gradient(36vmax 36vmax at 96% 22%, var(--blob-2), transparent 60%),
+        radial-gradient(40vmax 40vmax at 40% 108%, var(--blob-3), transparent 60%);
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #e8792b; outline-offset: 4px; border-radius: 8px; }
+
+    /* Hero */
+    .hero {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 88px 16px 40px;
+      text-align: center;
+    }
+    .icons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .icons img {
+      width: 92px;
+      height: 92px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      border: 4px solid var(--card);
+      background: var(--card);
+      animation: float 6s ease-in-out infinite;
+    }
+    .icons img:nth-child(1) { transform: rotate(-10deg); margin-right: -14px; animation-delay: 0s; }
+    .icons img:nth-child(2) { position: relative; z-index: 1; width: 108px; height: 108px; margin-top: -10px; animation-delay: -2s; }
+    .icons img:nth-child(3) { transform: rotate(10deg); margin-left: -14px; animation-delay: -4s; }
+    @keyframes float {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -10px; }
+    }
+    .wordmark {
+      font-family: var(--round);
+      font-size: clamp(3.2rem, 11vw, 6.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin: 0;
+      padding: 0 0.04em 0.06em;
+      display: inline-block;
+      background: linear-gradient(100deg, #e8792b 0%, #e0517a 45%, #3f8f5a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .tagline {
+      font-size: clamp(1.1rem, 2.6vw, 1.35rem);
+      color: var(--muted);
+      max-width: 34ch;
+      margin: 18px auto 32px;
+    }
+    .cta {
+      display: inline-block;
+      font-family: var(--round);
+      font-weight: 700;
+      text-decoration: none;
+      background: var(--text);
+      color: var(--bg);
+      padding: 12px 26px;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease;
+    }
+    .cta:hover { transform: translateY(-2px); }
+
+    /* Apps */
+    .apps {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 40px 16px 24px;
       display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 16px;
+      gap: 40px;
+    }
+    .section-title {
+      font-family: var(--round);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 -16px;
+    }
+    .app {
+      background: var(--card);
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .app:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .banner {
+      position: relative;
+      aspect-ratio: 2 / 1;
+      background: var(--tint);
+      overflow: hidden;
+    }
+    .banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .app:hover .banner img { transform: scale(1.03); }
+    .badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      font-family: var(--round);
+      font-weight: 700;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    }
+    .body {
+      position: relative;
+      padding: 0 32px 32px 32px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 20px;
+      align-items: end;
+    }
+    .body .icon {
+      width: 104px;
+      height: 104px;
+      border-radius: 26px;
+      margin-top: -44px;
+      border: 5px solid var(--card);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .body h2 {
+      font-family: var(--round);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin: 16px 0 0;
+    }
+    .body .pitch {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin: 16px 0 22px;
+      max-width: 52ch;
+    }
+    .actions {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 12px;
+    }
+    .store {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 168px;
+      padding: 10px 20px;
+      border-radius: 16px;
+      background: var(--accent);
+      color: var(--on-accent);
+      text-decoration: none;
+      line-height: 1.2;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .store:hover { transform: translateY(-2px); filter: brightness(1.08); }
+    .store small { font-size: 0.72rem; opacity: 0.85; }
+    .store strong { font-family: var(--round); font-size: 1.15rem; }
+    .soon {
+      display: inline-flex;
+      flex-direction: column;
+      min-width: 168px;
+      padding: 10px 20px;
+      border-radius: 16px;
+      background: var(--tint);
+      color: var(--accent);
+      line-height: 1.2;
+    }
+    .soon small { font-size: 0.72rem; opacity: 0.85; }
+    .soon strong { font-family: var(--round); font-size: 1.15rem; }
+    .minor {
+      display: flex;
+      gap: 18px;
+      margin-left: 8px;
+    }
+    .minor a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-underline-offset: 3px;
+    }
+    .minor a:hover { color: var(--text); }
+    .cageri .banner { background: #fefaee; }
+    .cageri .banner img { object-fit: contain; }
+
+    .miso { --accent: #d9661f; --on-accent: #ffffff; --tint: #fdeedd; }
+    .duckoff { --accent: #1f2a44; --on-accent: #ffd36b; --tint: #dcecf7; }
+    .cageri { --accent: #203e32; --on-accent: #e4f5b9; --tint: #f8f5eb; }
+    @media (prefers-color-scheme: dark) {
+      .miso { --accent: #f08a44; --on-accent: #1a1006; --tint: #3a2616; }
+      .duckoff { --accent: #ffd36b; --on-accent: #1f2a44; --tint: #1e2a3a; }
+      .cageri { --accent: #bfe38a; --on-accent: #16281f; --tint: #22302a; }
+      .badge { background: rgba(28, 28, 31, 0.9); }
+    }
+
+    /* Contact and footer */
+    .contact {
+      max-width: 1040px;
+      margin: 32px auto 0;
+      padding: 0 16px;
+    }
+    .contact-card {
+      text-align: center;
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 20px;
+      border-radius: 32px;
+      padding: 44px 24px;
+      box-shadow: var(--shadow);
     }
-    .app img { width: 72px; height: 72px; border-radius: 16px; }
-    .app h3 { margin: 0; font-size: 1.15rem; }
-    .app p { margin: 4px 0 12px; color: var(--muted); }
-    .links { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
-    .links a { color: var(--link); font-size: 0.95rem; }
-    .links a.store {
-      background: var(--button);
-      color: var(--button-text);
-      text-decoration: none;
-      border-radius: 10px;
-      padding: 6px 12px;
-      font-weight: 600;
+    .contact-card h2 {
+      font-family: var(--round);
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
     }
-    .app h3 + .links { margin-top: 10px; }
-    .soon { font-size: 0.9rem; color: var(--muted); }
-    .contact a { color: var(--link); }
-    footer { color: var(--muted); font-size: 0.85rem; padding-top: 40px; }
-    @media (max-width: 480px) {
-      main { padding-top: 32px; }
-      header h1 { font-size: 2rem; }
-      .app { grid-template-columns: 56px 1fr; padding: 16px; }
-      .app img { width: 56px; height: 56px; border-radius: 12px; }
+    .contact-card p { color: var(--muted); margin: 0 0 22px; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 40px 16px 48px;
+    }
+
+    @media (min-width: 880px) {
+      .app {
+        display: grid;
+        grid-template-columns: 1.25fr 1fr;
+        align-items: stretch;
+      }
+      .app.flip { grid-template-columns: 1fr 1.25fr; }
+      .app.flip .banner { order: 2; }
+      .banner { aspect-ratio: auto; min-height: 340px; }
+      .body {
+        padding: 36px 36px 36px 36px;
+        align-content: center;
+        align-items: center;
+      }
+      .body .icon { margin-top: 0; width: 84px; height: 84px; border-radius: 22px; border-width: 0; }
+      .body h2 { margin: 0; }
+      .actions { gap: 10px; }
+      .store, .soon { min-width: 0; flex: 1 1 140px; }
+      .minor { width: 100%; margin: 6px 0 0 4px; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding-top: 56px; }
+      .icons img { width: 72px; height: 72px; border-radius: 20px; }
+      .icons img:nth-child(2) { width: 84px; height: 84px; }
+      .app, .contact-card { border-radius: 24px; }
+      .body { padding: 0 20px 24px; column-gap: 14px; }
+      .body .icon { width: 80px; height: 80px; border-radius: 20px; margin-top: -32px; border-width: 4px; }
+      .badge { top: 12px; right: 12px; }
+      .store, .soon { flex: 1 1 140px; min-width: 0; }
+      .minor { width: 100%; margin: 4px 0 0; justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .icons img { animation: none; }
+      .app, .banner img, .store, .cta { transition: none; }
+      .app:hover, .store:hover, .cta:hover { transform: none; }
+      .app:hover .banner img { transform: none; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>AL4Bro</h1>
-      <p>Apps and games by an independent developer.</p>
-    </header>
+  <div class="backdrop" aria-hidden="true"></div>
 
-    <h2>Apps</h2>
-    <div class="apps">
-      <section class="app">
-        <img src="assets/miso.png" alt="Miso the Cat icon" width="72" height="72">
-        <div>
-          <h3>Miso the Cat</h3>
-          <p>Small paws, big adventure. Mini games for kids.</p>
-          <div class="links">
-            <span class="soon">Coming soon to the App Store and Google Play</span>
-            <a href="miso/support.html">Support</a>
-            <a href="miso/privacy.html">Privacy policy</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="app">
-        <img src="assets/duckoff.png" alt="DuckOff icon" width="72" height="72">
-        <div>
-          <h3>DuckOff</h3>
-          <div class="links">
-            <a class="store" href="https://apps.apple.com/app/id6760356647">App Store</a>
-            <a class="store" href="https://play.google.com/store/apps/details?id=com.alab.duckoff">Google Play</a>
-            <a href="duckoff/support.html">Support</a>
-            <a href="duckoff/privacy.html">Privacy policy</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="app">
-        <img src="assets/cageri.png" alt="Cageri icon" width="72" height="72">
-        <div>
-          <h3>Cageri</h3>
-          <p>Your hour. Your wish. In Macedonian.</p>
-          <div class="links">
-            <a class="store" href="https://apps.apple.com/app/id6817363033">App Store</a>
-            <a class="store" href="https://play.google.com/store/apps/details?id=com.alab.cageri">Google Play</a>
-            <a href="cageri/">Website</a>
-            <a href="cageri/support.html">Support</a>
-            <a href="cageri/privacy.html">Privacy policy</a>
-          </div>
-        </div>
-      </section>
+  <header class="hero">
+    <div class="icons" aria-hidden="true">
+      <img src="assets/duckoff.png" alt="" width="92" height="92">
+      <img src="assets/miso.png" alt="" width="108" height="108">
+      <img src="assets/cageri.png" alt="" width="92" height="92">
     </div>
+    <h1 class="wordmark">AL4Bro</h1>
+    <p class="tagline">Playful little apps and games, made with care by an independent developer.</p>
+    <a class="cta" href="#apps">See the apps</a>
+  </header>
 
-    <h2>Contact</h2>
-    <p class="contact">Questions or feedback: <a href="mailto:atanaslabroski@gmail.com">atanaslabroski@gmail.com</a></p>
+  <main class="apps" id="apps">
+    <p class="section-title">The apps</p>
 
-    <footer>AL4Bro</footer>
+    <article class="app miso">
+      <div class="banner">
+        <img src="assets/miso-banner.jpg" alt="Miso the Cat peeking over the game logo in a cozy playroom" width="1400" height="700">
+        <span class="badge">Coming soon</span>
+      </div>
+      <div class="body">
+        <img class="icon" src="assets/miso.png" alt="" width="104" height="104">
+        <h2>Miso the Cat</h2>
+        <p class="pitch">Small paws, big adventure. A cozy collection of mini games for kids, starring one very curious orange cat.</p>
+        <div class="actions">
+          <span class="soon"><small>Coming soon to</small><strong>App Store</strong></span>
+          <span class="soon"><small>Coming soon to</small><strong>Google Play</strong></span>
+          <span class="minor"><a href="miso/support.html">Support</a><a href="miso/privacy.html">Privacy policy</a></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="app duckoff flip">
+      <div class="banner">
+        <img src="assets/duckoff-banner.jpg" alt="DuckOff gameplay: ducks in sunglasses flying over a sunny beach pier" width="1400" height="645" loading="lazy">
+      </div>
+      <div class="body">
+        <img class="icon" src="assets/duckoff.png" alt="" width="104" height="104">
+        <h2>DuckOff</h2>
+        <p class="pitch">The ducks have taken over the beach, and they brought sunglasses. A fast, silly arcade game.</p>
+        <div class="actions">
+          <a class="store" href="https://apps.apple.com/app/id6760356647"><small>Download on the</small><strong>App Store</strong></a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=com.alab.duckoff"><small>Get it on</small><strong>Google Play</strong></a>
+          <span class="minor"><a href="duckoff/support.html">Support</a><a href="duckoff/privacy.html">Privacy policy</a></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="app cageri">
+      <div class="banner">
+        <img src="assets/cageri-banner.jpg" alt="Cageri: a green 11:11 clock with a heart, Make a wish" width="1400" height="600" loading="lazy">
+      </div>
+      <div class="body">
+        <img class="icon" src="assets/cageri.png" alt="" width="104" height="104">
+        <h2>Cageri</h2>
+        <p class="pitch">Your hour. Your wish. Meanings of mirror hours, favourite wishes and gentle reminders, in Macedonian.</p>
+        <div class="actions">
+          <a class="store" href="https://apps.apple.com/app/id6817363033"><small>Download on the</small><strong>App Store</strong></a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=com.alab.cageri"><small>Get it on</small><strong>Google Play</strong></a>
+          <span class="minor"><a href="cageri/">Website</a><a href="cageri/support.html">Support</a><a href="cageri/privacy.html">Privacy policy</a></span>
+        </div>
+      </div>
+    </article>
   </main>
+
+  <section class="contact">
+    <div class="contact-card">
+      <h2>Say hello</h2>
+      <p>Questions, ideas or a bug to report? I read every message.</p>
+      <a class="cta" href="mailto:atanaslabroski@gmail.com">atanaslabroski@gmail.com</a>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 AL4Bro</footer>
 </body>
 </html>
