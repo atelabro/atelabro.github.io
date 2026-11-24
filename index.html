@@ -168,6 +168,7 @@
       transition: transform 0.6s ease;
     }
     .app:hover .banner img { transform: scale(1.03); }
+    .banner video { width: 100%; height: 100%; object-fit: cover; display: block; }
     .badge {
       position: absolute;
       top: 18px;
@@ -444,7 +445,7 @@
 
     <article class="app ogc flip">
       <div class="banner">
-        <img src="assets/ogc-banner.jpg" alt="Of Gods &amp; Cities: an ancient Greek city with red-tiled houses, a temple and busy streets" width="1200" height="675" loading="lazy">
+        <video class="autoplay" src="assets/ogc-loop.mp4" poster="assets/ogc-banner.jpg" width="1200" height="600" muted loop playsinline preload="none" aria-label="Of Gods &amp; Cities gameplay: an ancient Greek city with red-tiled houses, a harbour, a stadium and busy streets"></video>
         <span class="badge">In development</span>
       </div>
       <div class="body">
@@ -491,5 +492,19 @@
   </section>
 
   <footer>&copy; 2026 AL4Bro</footer>
+  <script>
+    // Play banner videos only while they are on screen; they stay muted.
+    (function () {
+      var videos = document.querySelectorAll('video.autoplay');
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.muted = true; entry.target.play().catch(function () {}); }
+          else entry.target.pause();
+        });
+      }, { threshold: 0.5 });
+      videos.forEach(function (video) { observer.observe(video); });
+    })();
+  </script>
 </body>
 </html>
