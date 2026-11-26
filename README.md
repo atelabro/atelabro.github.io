@@ -22,5 +22,5 @@ GitHub Pages user site for AL4Bro. Hosts app-ads.txt, privacy policy, and suppor
 Root switched to the AL4Bro profile page on November 22, 2026. DuckOff's App Store Privacy Policy URL still points at the root (Apple only allows changing it with a new app version); the profile links to `duckoff/privacy.html` one click away.
 
 1. With the next DuckOff iOS version, change its Privacy Policy URL in App Store Connect to `https://atelabro.github.io/duckoff/privacy.html`, and its support URL to `https://atelabro.github.io/duckoff/support.html` if it uses the root support page.
-2. When Miso the Cat is live, replace "Coming soon" on the profile with its store links.
+2. Miso the Cat is live on Google Play since November 26, 2026 (link added to the profile). When iOS 1.3.3 is approved, replace "Coming soon to App Store" with `https://apps.apple.com/app/id6818754894` and drop the "New on Google Play" badge.
 3. Keep `app-ads.txt` at the root.
