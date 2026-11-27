@@ -4,7 +4,7 @@ GitHub Pages user site for AL4Bro. Hosts app-ads.txt, privacy policy, and suppor
 
 ## Live URLs
 
-- https://atelabro.github.io/ (AL4Bro developer profile: Miso the Cat, DuckOff, Cageri, Of Gods & Cities in development, and cenaimbox.mk)
+- https://atelabro.github.io/ (AL4Bro developer profile: Miso the Cat, DuckOff, Cageri, Of Gods & Cities and Dig Off in development, and cenaimbox.mk)
 - https://atelabro.github.io/support.html (currently DuckOff support)
 - https://atelabro.github.io/app-ads.txt (must stay at the root for AdMob)
 - https://atelabro.github.io/duckoff/privacy.html
@@ -26,3 +26,4 @@ Root switched to the AL4Bro profile page on November 22, 2026. DuckOff's App Sto
 1. With the next DuckOff iOS version, change its Privacy Policy URL in App Store Connect to `https://atelabro.github.io/duckoff/privacy.html`, and its support URL to `https://atelabro.github.io/duckoff/support.html` if it uses the root support page.
 2. Miso the Cat is live on Google Play since November 26, 2026 (link added to the profile). When iOS 1.3.3 is approved, replace "Coming soon to App Store" with `https://apps.apple.com/app/id6818754894`, drop the "New on Google Play" badge, and in `miso-link/index.html` set `iosLive` to true and turn the "Coming soon" span into a link.
 3. Keep `app-ads.txt` at the root.
+4. Dig Off: the card plays `assets/digoff-loop.mp4` and opens `assets/digoff-gameplay.mp4` full screen. Replace both with newer gameplay videos as the game develops.
